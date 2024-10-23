@@ -2,6 +2,10 @@ import pygame
 import random
 import sys
 import math
+from pythonosc import udp_client
+from pythonosc import osc_message_builder
+import time
+import threading
 
 # Initialisiere Pygame
 pygame.init()
@@ -24,6 +28,8 @@ initial_bullseye_radius = 90  # Startgröße des Bullseyes
 initial_bullseye_speed = 3  # Startgeschwindigkeit des Bullseyes
 game_over = False
 
+# OSC Client initialisieren
+osc_client = udp_client.SimpleUDPClient('127.0.0.1', 8000)  # Ziel-IP und Port
 
 # Bullseye-Klasse
 class Bullseye:
@@ -89,6 +95,12 @@ class Bullseye:
             if self.y <= self.radius or self.y >= SCREEN_HEIGHT - self.radius:
                 self.dy *= -1  # Umkehren der vertikalen Richtung
 
+# Funktion zum Senden der OSC-Daten
+def send_osc_data():
+    while True:
+        if not game_over:
+            osc_client.send_message("/bullseye/position", (bullseye.x, bullseye.y))
+            time.sleep(0.5)  # 0,5 Sekunden warten
 
 # Spiel Schleife
 def main():
@@ -100,6 +112,11 @@ def main():
 
     # Erstelle das erste Bullseye
     bullseye = Bullseye(level)
+
+    # Starte den Thread zum Senden von OSC-Daten
+    osc_thread = threading.Thread(target=send_osc_data)
+    osc_thread.daemon = True
+    osc_thread.start()
 
     while True:
         screen.fill(SKY_BLUE)  # Fülle den Bildschirm mit himmelblau
@@ -145,7 +162,6 @@ def main():
 
         pygame.display.flip()
         clock.tick(60)
-
 
 if __name__ == "__main__":
     main()
