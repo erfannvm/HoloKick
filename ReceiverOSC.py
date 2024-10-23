@@ -14,7 +14,7 @@ def main():
 
     # OSC-Server initialisieren
     server = osc_server.BlockingOSCUDPServer(("127.0.0.1", 8000), disp)  # IP und Port anpassen
-    print("Starte OSC-Server... (drücke Strg+C zum Beenden)")
+    print("Starte OSC-Server...")
 
     # Server starten
     server.serve_forever()

@@ -3,9 +3,9 @@ import random
 import sys
 import math
 from pythonosc import udp_client
-from pythonosc import osc_message_builder
 import time
 import threading
+import subprocess
 
 # Initialisiere Pygame
 pygame.init()
@@ -102,6 +102,16 @@ def send_osc_data():
             osc_client.send_message("/bullseye/position", (bullseye.x, bullseye.y))
             time.sleep(0.5)  # 0,5 Sekunden warten
 
+# Funktion zum Starten des ReceiverOSC-Programms
+def start_receiver_osc():
+    global receiver_process
+    receiver_process = subprocess.Popen(['python', 'ReceiverOSC.py'])  # ReceiverOSC starten
+
+# Funktion zum Beenden des ReceiverOSC-Programms
+def stop_receiver_osc():
+    if receiver_process:
+        receiver_process.terminate()  # Beende den ReceiverOSC-Prozess
+
 # Spiel Schleife
 def main():
     global level, game_over, bullseye
@@ -118,12 +128,16 @@ def main():
     osc_thread.daemon = True
     osc_thread.start()
 
+    # Starte den ReceiverOSC-Prozess
+    start_receiver_osc()
+
     while True:
         screen.fill(SKY_BLUE)  # Fülle den Bildschirm mit himmelblau
 
         # Überprüfe auf Ereignisse
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                stop_receiver_osc()  # Beende ReceiverOSC beim Schließen
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
@@ -131,6 +145,7 @@ def main():
                     level += 1
                     if level > max_level:
                         print("Gewonnen! Du hast alle Level abgeschlossen!")
+                        stop_receiver_osc()  # Beende ReceiverOSC beim Gewinnen
                         pygame.quit()
                         sys.exit()
                     bullseye = Bullseye(level)  # Erstelle ein neues Bullseye an einer zufälligen Position
@@ -143,6 +158,11 @@ def main():
                     level = 1
                     game_over = False
                     bullseye = Bullseye(level)  # Setze das Bullseye zurück
+                # Beende das Spiel, wenn die Escape-Taste gedrückt wird
+                if event.key == pygame.K_ESCAPE:
+                    stop_receiver_osc()  # Beende ReceiverOSC beim Beenden
+                    pygame.quit()
+                    sys.exit()
 
         # Bewege das Bullseye, wenn das Level 5 oder höher ist
         bullseye.move()
@@ -164,4 +184,5 @@ def main():
         clock.tick(60)
 
 if __name__ == "__main__":
+    receiver_process = None  # Globaler Prozess für ReceiverOSC
     main()
