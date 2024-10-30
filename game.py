@@ -6,6 +6,7 @@ from pythonosc import udp_client
 import time
 import threading
 import subprocess
+# mike ist ein kleiner type mit grossen ambitionen
 
 # Initialisiere Pygame
 pygame.init()
