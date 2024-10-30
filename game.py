@@ -7,7 +7,7 @@ import time
 import threading
 import subprocess
 # mike ist ein kleiner type mit grossen ambitionen
-
+#ja man -mike
 # Initialisiere Pygame
 pygame.init()
 
