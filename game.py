@@ -4,13 +4,12 @@ import sys
 import math
 import os
 
-# Initialisiere Pygame
 pygame.init()
 
 # Bildschirmkonfiguration
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("HoloKick")
 
 # Farben
@@ -172,4 +171,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
