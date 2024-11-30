@@ -7,8 +7,8 @@ import os
 pygame.init()
 
 # Bildschirmkonfiguration
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1500
+SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("HoloKick")
 
@@ -40,7 +40,7 @@ class HoloKick:
         self.image = pygame.image.load('bullseye.png')
         self.image = pygame.transform.scale(self.image, (self.radius * 2, self.radius * 2))
         self.marker = pygame.image.load(os.path.join("markers", "marker_4.png"))
-        self.marker = pygame.transform.scale(self.marker, (30, 30))
+        self.marker = pygame.transform.scale(self.marker, (50, 50))
         self.marker_background = pygame.Surface((60, 60), pygame.SRCALPHA)
         pygame.draw.circle(self.marker_background, SKY_BLUE, (30, 30), 30)
         self.dx, self.dy = self.set_speed()
@@ -100,7 +100,7 @@ class HoloKick:
 
 def draw_corner_markers():
     """Zeichne die vier gespeicherten ArUco-Marker in den Ecken des Bildschirms."""
-    marker_size = 50  # Größe der Marker in Pygame
+    marker_size = 60  # Größe der Marker in Pygame
     # Marker an den vier Ecken anzeigen
     screen.blit(pygame.transform.scale(markers[0], (marker_size, marker_size)), (0, 0))
     screen.blit(pygame.transform.scale(markers[1], (marker_size, marker_size)), (SCREEN_WIDTH - marker_size, 0))
