@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe18685-7ac1-426c-896e-ed23617a7248" name="Changes" comment="New Commit">
-      <change afterPath="$PROJECT_DIR$/AudioDetection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EMG.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VideoDetection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AudioDetection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VideoDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/VideoDetection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/markers/marker_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/markers/marker_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/markers/marker_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/markers/marker_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/markers/marker_4.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +59,7 @@
     &quot;Python.EMG.executor&quot;: &quot;Run&quot;,
     &quot;Python.ReceiverOSC.executor&quot;: &quot;Run&quot;,
     &quot;Python.VideoCapture.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VideoDetection.executor&quot;: &quot;Run&quot;,
     &quot;Python.audio_detection.executor&quot;: &quot;Run&quot;,
     &quot;Python.camera.executor&quot;: &quot;Run&quot;,
     &quot;Python.detect.executor&quot;: &quot;Run&quot;,
@@ -145,6 +149,10 @@
       <workItem from="1732721845303" duration="1473000" />
       <workItem from="1732726724814" duration="2970000" />
       <workItem from="1732893121390" duration="3835000" />
+      <workItem from="1732907891954" duration="4763000" />
+      <workItem from="1733069343640" duration="12000" />
+      <workItem from="1733307485197" duration="172000" />
+      <workItem from="1733307806221" duration="2498000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit">
       <option name="closed" value="true" />
@@ -210,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732109974634</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="New Commit">
+      <option name="closed" value="true" />
+      <created>1732968947008</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732968947008</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,10 +255,11 @@
     <SUITE FILE_PATH="coverage/HoloKick$markers.coverage" NAME="markers Coverage Results" MODIFIED="1730301307864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/HoloKick$detect.coverage" NAME="detect Coverage Results" MODIFIED="1732116590237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/HoloKick$video_detection.coverage" NAME="video_detection Coverage Results" MODIFIED="1732722079551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/HoloKick$EMG.coverage" NAME="EMG Coverage Results" MODIFIED="1732907878474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/HoloKick$game.coverage" NAME="game Coverage Results" MODIFIED="1732893191767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/HoloKick$EMG.coverage" NAME="EMG Coverage Results" MODIFIED="1732908749211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/HoloKick$game.coverage" NAME="game Coverage Results" MODIFIED="1733316989631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/HoloKick$VideoCapture.coverage" NAME="VideoCapture Coverage Results" MODIFIED="1729686360398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/HoloKick$camera.coverage" NAME="camera Coverage Results" MODIFIED="1730303489546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/HoloKick$detection.coverage" NAME="detection Coverage Results" MODIFIED="1732714817637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/HoloKick$VideoDetection.coverage" NAME="VideoDetection Coverage Results" MODIFIED="1733317068953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

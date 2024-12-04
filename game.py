@@ -24,12 +24,6 @@ initial_bullseye_radius = 90
 initial_bullseye_speed = 3
 game_over = False
 
-# Lade die ArUco-Marker-Bilder
-markers = [
-    pygame.image.load(os.path.join("markers", f"marker_{i}.png"))
-    for i in range(4)
-]
-
 # Bullseye-Klasse
 class HoloKick:
     def __init__(self, level):
@@ -39,10 +33,6 @@ class HoloKick:
         self.angle = 0
         self.image = pygame.image.load('bullseye.png')
         self.image = pygame.transform.scale(self.image, (self.radius * 2, self.radius * 2))
-        self.marker = pygame.image.load(os.path.join("markers", "marker_4.png"))
-        self.marker = pygame.transform.scale(self.marker, (50, 50))
-        self.marker_background = pygame.Surface((60, 60), pygame.SRCALPHA)
-        pygame.draw.circle(self.marker_background, SKY_BLUE, (30, 30), 30)
         self.dx, self.dy = self.set_speed()
 
     def set_initial_position(self):
@@ -79,12 +69,6 @@ class HoloKick:
         bullseye_rect = rotated_bullseye.get_rect(center=(self.x, self.y))
         screen.blit(rotated_bullseye, bullseye_rect.topleft)
 
-        # Runder Hintergrund und Marker in der Mitte des Bullseyes zeichnen
-        marker_bg_rect = self.marker_background.get_rect(center=(self.x, self.y))
-        marker_rect = self.marker.get_rect(center=(self.x, self.y))
-        screen.blit(self.marker_background, marker_bg_rect.topleft)  # Runden Hintergrund zeichnen
-        screen.blit(self.marker, marker_rect.topleft)  # Marker zeichnen
-
     def is_clicked(self, pos):
         distance = math.sqrt((pos[0] - self.x) ** 2 + (pos[1] - self.y) ** 2)
         return distance <= self.radius
@@ -97,15 +81,6 @@ class HoloKick:
                 self.dx *= -1
             if self.y <= self.radius or self.y >= SCREEN_HEIGHT - self.radius:
                 self.dy *= -1
-
-def draw_corner_markers():
-    """Zeichne die vier gespeicherten ArUco-Marker in den Ecken des Bildschirms."""
-    marker_size = 60  # Größe der Marker in Pygame
-    # Marker an den vier Ecken anzeigen
-    screen.blit(pygame.transform.scale(markers[0], (marker_size, marker_size)), (0, 0))
-    screen.blit(pygame.transform.scale(markers[1], (marker_size, marker_size)), (SCREEN_WIDTH - marker_size, 0))
-    screen.blit(pygame.transform.scale(markers[2], (marker_size, marker_size)), (0, SCREEN_HEIGHT - marker_size))
-    screen.blit(pygame.transform.scale(markers[3], (marker_size, marker_size)), (SCREEN_WIDTH - marker_size, SCREEN_HEIGHT - marker_size))
 
 # Spiel Schleife
 def main():
@@ -147,9 +122,6 @@ def main():
 
         bullseye.move()
         bullseye.draw()
-
-        # Zeichne die Marker
-        draw_corner_markers()
 
         # Level-Text anzeigen
         level_text = font.render(f'Level: {level}', True, BLACK)
